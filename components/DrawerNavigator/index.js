@@ -1,14 +1,13 @@
-import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer'
-import Home from '../../screens/Home';
+import React from "react";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import Home from "../../screens/Home";
 
-export default function DrawerNavigator(){
-    const Drawer = createDrawerNavigator();
+export default function DrawerNavigator() {
+  const Drawer = createDrawerNavigator();
 
-    return(
+  return (
     <Drawer.Navigator>
-        <Drawer.Screen name={'Home'} component={Home}/>
-
+      <Drawer.Screen name={"Homeeee"} component={Home} />
     </Drawer.Navigator>
-    )
+  );
 }
