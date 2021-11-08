@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, StatusBar } from 'react-native';
 
-export default ({ navigation }) => {
+export default () => {
     return(
         <View>
             <StatusBar style="auto" />
             <View>
-                <Button title="Iniciar sesión con Google" />
+                <Button title="Registrarse con Google"/>
             </View>
         </View>
         

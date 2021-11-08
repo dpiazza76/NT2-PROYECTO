@@ -1,15 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, StatusBar } from 'react-native';
-import Login from '../../components/Login';
+import LoginButtons from '../../components/LoginButtons';
 
 export default ({ navigation }) => {
     return(
         <View>
             <StatusBar style="auto" />
             <View>
-                <Text style={styles.Texto}> Bienvenido a juegos</Text>
+                <Text style={styles.Texto}> Bienvenido a juegos. Inicie sesión o regístrese para continuar</Text>
             </View>
-            <Login/>
+            <LoginButtons />
         </View>
         
     )

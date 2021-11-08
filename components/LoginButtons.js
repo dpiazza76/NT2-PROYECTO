@@ -1,17 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Login() {
+export default function LoginButtons() {
+  const navigation = useNavigation();
     return(
 
         <View style={styles.Button}>
           <Button
             title= "Iniciar sesión"
-            //onPress={}
+            onPress={() => navigation.navigate("Login")}
           />
             <Button
             title="Registrarse"
-            //onPress={}
+            onPress={() => navigation.navigate("Register")}
           />
             </View>       
 )}
