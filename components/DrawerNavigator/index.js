@@ -5,10 +5,10 @@ import Login from '../../screens/Login'
 import Register from '../../screens/Register';
 import LoginButtons from '../LoginButtons';
 
-export default function DrawerNavigator(){
-    const Drawer = createDrawerNavigator();
+export default function DrawerNavigator() {
+  const Drawer = createDrawerNavigator();
 
-    return(
+  return (
     <Drawer.Navigator>
         <Drawer.Screen name={'Home'} component={Home}/>
         <Drawer.Screen name={'Login'} component={Login}/>
