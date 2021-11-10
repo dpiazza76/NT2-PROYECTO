@@ -1,0 +1,33 @@
+import React from 'react'
+import {SafeAreaView} from 'react-native'
+import {Button, TextInputField} from './components/'
+import {useForm, Controller} from 'react-hook-form'
+const LoginScreen = () => {
+  const {
+    control, 
+    handleSubmit, 
+    formState: {errors, isValid}
+  } = useForm({mode: 'onBlur'})
+  
+  const onSubmit = data => console.log(data)
+  
+return(
+    <SafeAreaView>
+      <Controller        
+         control={control}        
+         name="name"        
+         render={({field: {onChange, value, onBlur}}) => (            
+           <TextInputField            
+             iconName="person"            
+             iconType="MaterialIcons"            
+             placeholder="Enter your name here"            
+             value={value}            
+             onBlur={onBlur}            
+             onChangeText={value => onChange(value)}          
+           />        
+         )} 
+      />
+      <Button title='Submit' onPress={handleSubmit(onSubmit)}/>
+    </SafeAreaView>
+  )
+}

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { StyleSheet, Text, View, Button, StatusBar } from 'react-native';
 import LoginButtons from '../../components/LoginButtons';
@@ -15,22 +14,6 @@ export default ({ navigation }) => {
         
     )
 }
-=======
-import React from "react";
-import { StyleSheet, Text, View, Button, StatusBar } from "react-native";
-import Login from "../../components/Login.js";
-
-export default ({ navigation }) => {
-  return (
-    <View>
-      <StatusBar style="auto" />
-
-      <Text style={styles.Texto}> Bienvenido a juegos 😃</Text>
-      <Login />
-    </View>
-  );
-};
->>>>>>> 4416d0a388cee24a116dac6b193b967c974fb339
 
 const styles = StyleSheet.create({
   Button: {
