@@ -5,8 +5,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import Food from "./Food";
 import Head from "./Head";
 import Tail from "./Tail";
-import Constants from "C:\Users\Gustav\Desktop\ORT Cuatrimestre 3\NT2-PROYECTO\Constants.js";
-import GameLoop from "C:\Users\Gustav\Desktop\ORT Cuatrimestre 3\NT2-PROYECTO\Systems\SnakeGameLoop.js";
+import Constants from "../../Constants";
+import GameLoop from "./GameLoop/SnakeGameLoop";
 
 export default function Snake() {
   const BoardSize = Constants.GRID_SIZE * Constants.CELL_SIZE;

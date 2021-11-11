@@ -7,7 +7,9 @@ import Snake from "./components/SnakeGame/Snake";
 
 export default function App() {
   return (
-    <Snake/>
+    <View>
+      <Snake/>
+    </View>
   );
 }
 
