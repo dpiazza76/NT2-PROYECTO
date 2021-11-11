@@ -1,8 +1,11 @@
 import React from 'react'
 import {SafeAreaView} from 'react-native'
-import {Button, TextInputField} from './components/'
+import { Button } from 'react-native'
+import { TextInput } from 'react-native-gesture-handler'
+//import {Button, TextInputField} from './components/'
 import {useForm, Controller} from 'react-hook-form'
-const LoginScreen = () => {
+
+export default () => {
   const {
     control, 
     handleSubmit, 
@@ -17,17 +20,17 @@ return(
          control={control}        
          name="name"        
          render={({field: {onChange, value, onBlur}}) => (            
-           <TextInputField            
+           <TextInput            
              iconName="person"            
              iconType="MaterialIcons"            
-             placeholder="Enter your name here"            
+             placeholder="Ingrese su nombre"            
              value={value}            
              onBlur={onBlur}            
              onChangeText={value => onChange(value)}          
            />        
          )} 
       />
-      <Button title='Submit' onPress={handleSubmit(onSubmit)}/>
+      <Button title='Enviar' onPress={handleSubmit(onSubmit)}/>
     </SafeAreaView>
   )
 }
