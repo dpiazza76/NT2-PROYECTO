@@ -19,10 +19,6 @@ export default function Snake() {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  useEffect(() => {
-    setScore(score);
-  }, [0]);
-
   const resetGame = () => {
     engine.current.swap({
       head: {
