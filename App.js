@@ -6,10 +6,5 @@ import "react-native-gesture-handler";
 import Snake from "./components/SnakeGame/Snake";
 
 export default function App() {
-  return (
-    <View>
-      <Snake/>
-    </View>
-  );
+  return <Snake />;
 }
-
