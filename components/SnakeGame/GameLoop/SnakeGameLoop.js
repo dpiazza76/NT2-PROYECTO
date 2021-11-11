@@ -1,11 +1,13 @@
 import Constants from "../../../Constants";
+
 const randomPositions = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
-  export default function (entities, { events, dispatch }) {
-    const head = entities.head;
-    const food = entities.food;
-    const tail = entities.tail;
+
+export default function (entities, { events, dispatch }) {
+  const head = entities.head;
+  const food = entities.food;
+  const tail = entities.tail;
   if (events.length) {
     events.forEach((e) => {
       switch (e) {
@@ -45,18 +47,16 @@ const randomPositions = (min, max) => {
       head.position[1] + head.yspeed >= Constants.GRID_SIZE
     ) {
       dispatch("game-over");
+      score = 0;
     } else {
       tail.elements = [[head.position[0], head.position[1]], ...tail.elements];
       tail.elements.pop();
       head.position[0] += head.xspeed;
       head.position[1] += head.yspeed;
       tail.elements.forEach((el, idx) => {
-        console.log({ el, idx });
-        if (
-          head.position[0] === el[0] &&
-          head.position[1] === el[1] 
-        )
+        if (head.position[0] === el[0] && head.position[1] === el[1])
           dispatch("game-over");
+        score = 0;
       });
       if (
         head.position[0] == food.position[0] &&
@@ -66,6 +66,7 @@ const randomPositions = (min, max) => {
           [head.position[0], head.position[1]],
           ...tail.elements,
         ];
+        dispatch("ate-food");
 
         food.position = [
           randomPositions(0, Constants.GRID_SIZE - 1),

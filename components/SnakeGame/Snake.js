@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -11,14 +11,22 @@ import GameLoop from "./GameLoop/SnakeGameLoop";
 export default function Snake() {
   const BoardSize = Constants.GRID_SIZE * Constants.CELL_SIZE;
   const engine = useRef(null);
+  const initialPos = Math.floor(Constants.GRID_SIZE / 2);
   const [isGameRunning, setIsGameRunning] = useState(true);
+  const [score, setScore] = useState(0);
+
   const randomPositions = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
+
+  useEffect(() => {
+    setScore(score);
+  }, [0]);
+
   const resetGame = () => {
     engine.current.swap({
       head: {
-        position: [0, 0],
+        position: [initialPos, initialPos],
         size: Constants.CELL_SIZE,
         updateFrequency: 10,
         nextMove: 10,
@@ -58,7 +66,7 @@ export default function Snake() {
         }}
         entities={{
           head: {
-            position: [0, 0],
+            position: [initialPos, initialPos],
             size: Constants.CELL_SIZE,
             updateFrequency: 10,
             nextMove: 10,
@@ -87,6 +95,10 @@ export default function Snake() {
             case "game-over":
               alert("Game over!");
               setIsGameRunning(false);
+              setScore(0);
+              return;
+            case "ate-food":
+              setScore(score + 1);
               return;
           }
         }}
@@ -118,6 +130,7 @@ export default function Snake() {
           </TouchableOpacity>
         </View>
       </View>
+      <Text style={styles.score}>Total score: {score}</Text>
       {!isGameRunning && (
         <TouchableOpacity onPress={resetGame}>
           <Text
@@ -127,7 +140,7 @@ export default function Snake() {
               fontSize: 22,
               padding: 10,
               backgroundColor: "grey",
-              borderRadius: 10
+              borderRadius: 10,
             }}
           >
             Start New Game
@@ -157,5 +170,12 @@ const styles = StyleSheet.create({
     backgroundColor: "yellow",
     width: 100,
     height: 100,
+  },
+  score: {
+    color: "white",
+    marginTop: 15,
+    fontSize: 22,
+    padding: 10,
+    borderRadius: 10,
   },
 });
