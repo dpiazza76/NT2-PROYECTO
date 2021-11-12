@@ -5,6 +5,7 @@ import Login from '../../screens/Login'
 import Register from '../../screens/Register';
 import LoginButtons from '../LoginButtons';
 import Form from '../../screens/Register/Form.js';
+import SelectGame from '../../screens/SelectGame';
 
 export default function DrawerNavigator() {
   const Drawer = createDrawerNavigator();
@@ -15,6 +16,7 @@ export default function DrawerNavigator() {
         <Drawer.Screen name={'Login'} component={Login}/>
         <Drawer.Screen name={'Register'} component={Register}/>
         <Drawer.Screen name={'Form'} component={Form}/>
+        <Drawer.Screen name={'SelectGame'} component={SelectGame}/>
     </Drawer.Navigator>
 
 )}
