@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useRef, useState } from "react";
+import { StyleSheet, Text, View, StatusBar } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Food from "./Food";
@@ -59,6 +59,7 @@ export default function Snake() {
   };
   return (
     <View style={styles.canvas}>
+      <StatusBar style="auto" />
       <GameEngine
         ref={engine}
         style={{
