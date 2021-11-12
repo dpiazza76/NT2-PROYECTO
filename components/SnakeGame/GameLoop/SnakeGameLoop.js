@@ -47,7 +47,6 @@ export default function (entities, { events, dispatch }) {
       head.position[1] + head.yspeed >= Constants.GRID_SIZE
     ) {
       dispatch("game-over");
-      score = 0;
     } else {
       tail.elements = [[head.position[0], head.position[1]], ...tail.elements];
       tail.elements.pop();
@@ -56,7 +55,6 @@ export default function (entities, { events, dispatch }) {
       tail.elements.forEach((el, idx) => {
         if (head.position[0] === el[0] && head.position[1] === el[1])
           dispatch("game-over");
-        score = 0;
       });
       if (
         head.position[0] == food.position[0] &&

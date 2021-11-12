@@ -13,7 +13,14 @@ export default function Snake() {
   const engine = useRef(null);
   const initialPos = Math.floor(Constants.GRID_SIZE / 2);
   const [isGameRunning, setIsGameRunning] = useState(true);
+
   const [score, setScore] = useState(0);
+  // Should initialize the value with score from db -> axios.get...
+  const [highScore, setHighScore] = useState(score);
+
+  const updateHighScore = () => {
+    if (score > highScore) setHighScore(score);
+  };
 
   const randomPositions = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -92,6 +99,7 @@ export default function Snake() {
               alert("Game over!");
               setIsGameRunning(false);
               setScore(0);
+              updateHighScore();
               return;
             case "ate-food":
               setScore(score + 1);
@@ -127,6 +135,7 @@ export default function Snake() {
         </View>
       </View>
       <Text style={styles.score}>Total score: {score}</Text>
+      <Text style={styles.score}>High score: {highScore}</Text>
       {!isGameRunning && (
         <TouchableOpacity onPress={resetGame}>
           <Text
