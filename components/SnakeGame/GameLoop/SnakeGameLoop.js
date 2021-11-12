@@ -1,4 +1,5 @@
 import Constants from "../../../Constants";
+import { Vibration } from "react-native";
 
 const randomPositions = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -46,6 +47,7 @@ export default function (entities, { events, dispatch }) {
       head.position[1] + head.yspeed < 0 ||
       head.position[1] + head.yspeed >= Constants.GRID_SIZE
     ) {
+      Vibration.vibrate();
       dispatch("game-over");
     } else {
       tail.elements = [[head.position[0], head.position[1]], ...tail.elements];
@@ -53,8 +55,10 @@ export default function (entities, { events, dispatch }) {
       head.position[0] += head.xspeed;
       head.position[1] += head.yspeed;
       tail.elements.forEach((el, idx) => {
-        if (head.position[0] === el[0] && head.position[1] === el[1])
+        if (head.position[0] === el[0] && head.position[1] === el[1]) {
+          Vibration.vibrate();
           dispatch("game-over");
+        }
       });
       if (
         head.position[0] == food.position[0] &&

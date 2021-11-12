@@ -7,6 +7,7 @@ import Head from "./Head";
 import Tail from "./Tail";
 import Constants from "../../Constants";
 import GameLoop from "./GameLoop/SnakeGameLoop";
+import { Audio } from "expo-av";
 
 export default function Snake() {
   const BoardSize = Constants.GRID_SIZE * Constants.CELL_SIZE;
@@ -25,6 +26,30 @@ export default function Snake() {
   const randomPositions = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
+
+  //sonido
+
+  const [sound, setSound] = React.useState();
+
+  async function playSound() {
+    console.log("Loading Sound");
+    const { sound } = await Audio.Sound.createAsync(
+      require("../../assets/sounds/background_music.mp3")
+    );
+    setSound(sound);
+
+    console.log("Playing Sound");
+    await sound.playAsync();
+  }
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
 
   const resetGame = () => {
     engine.current.swap({
@@ -55,6 +80,7 @@ export default function Snake() {
         renderer: <Tail />,
       },
     });
+    playSound();
     setIsGameRunning(true);
   };
   return (
@@ -100,6 +126,7 @@ export default function Snake() {
               alert("Game over!");
               setIsGameRunning(false);
               setScore(0);
+              setSound({});
               updateHighScore();
               return;
             case "ate-food":
