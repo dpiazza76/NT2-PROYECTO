@@ -126,8 +126,8 @@ export default function Snake() {
               alert("Game over!");
               setIsGameRunning(false);
               setScore(0);
-              setSound({});
               updateHighScore();
+
               return;
             case "ate-food":
               setScore(score + 1);
