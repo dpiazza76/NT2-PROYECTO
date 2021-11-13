@@ -4,7 +4,7 @@ import LoginButtons from "../../components/LoginButtons";
 
 export default ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.Container}>
       <StatusBar style="auto" />
       <View>
         <Text style={styles.Texto}>
@@ -24,5 +24,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     marginTop: 25,
+  },
+  Container: {
+    alignContent: "center",
+    alignItems: "center",
+    textAlign: "center",
   },
 });
