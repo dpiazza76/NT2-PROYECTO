@@ -1,13 +1,6 @@
 import React from "react";
-import { useNavigation } from '@react-navigation/native';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TouchableOpacity,
-  Vibration,
-} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 export default function LoginButtons() {
   const navigation = useNavigation();
