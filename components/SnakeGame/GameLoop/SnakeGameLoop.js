@@ -68,6 +68,7 @@ export default function (entities, { events, dispatch }) {
           [head.position[0], head.position[1]],
           ...tail.elements,
         ];
+        Vibration.vibrate();
         dispatch("ate-food");
 
         food.position = [

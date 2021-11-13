@@ -85,7 +85,8 @@ export default function Snake() {
   };
   return (
     <View style={styles.canvas}>
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
+
       <GameEngine
         ref={engine}
         style={{
@@ -127,6 +128,7 @@ export default function Snake() {
               setIsGameRunning(false);
               setScore(0);
               updateHighScore();
+              setSound(undefined);
 
               return;
             case "ate-food":
