@@ -16,7 +16,7 @@ export default function DrawerNavigator() {
       <Drawer.Screen name={"Login"} component={Login} />
       <Drawer.Screen name={"Register"} component={Register} />
       <Drawer.Screen name={"Form"} component={Form} />
-      <Drawer.Screen name={"Favs"} component={Favs} />
+      <Drawer.Screen name={"Favs ❤"} component={Favs} />
     </Drawer.Navigator>
   );
 }
