@@ -6,6 +6,7 @@ import Register from "../../screens/Register";
 import LoginButtons from "../LoginButtons";
 import Form from "../../screens/Register/Form.js";
 import Favs from "../../screens/Favs";
+import Ranking from "../../screens/Ranking";
 import SelectGame from "../../screens/SelectGame";
 import Snake from "../SnakeGame/Snake";
 export default function DrawerNavigator() {
@@ -20,6 +21,7 @@ export default function DrawerNavigator() {
       <Drawer.Screen name={"Favs ❤"} component={Favs} />
       <Drawer.Screen name={"SelectGame"} component={SelectGame} />
       <Drawer.Screen name={"Snake"} component={Snake} />
+      <Drawer.Screen name={"Ranking"} component={Ranking} />
     </Drawer.Navigator>
   );
 }
