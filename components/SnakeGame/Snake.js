@@ -7,6 +7,7 @@ import Head from "./Head";
 import Tail from "./Tail";
 import Constants from "../../Constants";
 import GameLoop from "./GameLoop/SnakeGameLoop";
+import { Audio } from "expo-av";
 
 export default function Snake() {
   const BoardSize = Constants.GRID_SIZE * Constants.CELL_SIZE;
@@ -25,6 +26,30 @@ export default function Snake() {
   const randomPositions = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
+
+  //sonido
+
+  const [sound, setSound] = React.useState();
+
+  async function playSound() {
+    console.log("Loading Sound");
+    const { sound } = await Audio.Sound.createAsync(
+      require("../../assets/snake.mp3")
+    );
+    setSound(sound);
+
+    console.log("Playing Sound");
+    await sound.playAsync();
+  }
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
 
   const resetGame = () => {
     engine.current.swap({
@@ -55,11 +80,12 @@ export default function Snake() {
         renderer: <Tail />,
       },
     });
+    playSound();
     setIsGameRunning(true);
   };
   return (
     <View style={styles.canvas}>
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
       <GameEngine
         ref={engine}
         style={{
@@ -101,6 +127,7 @@ export default function Snake() {
               setIsGameRunning(false);
               setScore(0);
               updateHighScore();
+              setSound(undefined);
               return;
             case "ate-food":
               setScore(score + 1);
@@ -134,25 +161,31 @@ export default function Snake() {
             <View style={styles.controlBtn} />
           </TouchableOpacity>
         </View>
+
+        {!isGameRunning && (
+          <TouchableOpacity onPress={resetGame}>
+            <Text
+              style={{
+                color: "white",
+                marginTop: 15,
+                fontSize: 22,
+                padding: 10,
+                backgroundColor: "grey",
+                borderRadius: 10,
+                justifyContent: "center",
+              }}
+            >
+              Start New Game
+            </Text>
+          </TouchableOpacity>
+        )}
+        {/* // */}
       </View>
-      <Text style={styles.score}>Total score: {score}</Text>
-      <Text style={styles.score}>High score: {highScore}</Text>
-      {!isGameRunning && (
-        <TouchableOpacity onPress={resetGame}>
-          <Text
-            style={{
-              color: "white",
-              marginTop: 15,
-              fontSize: 22,
-              padding: 10,
-              backgroundColor: "grey",
-              borderRadius: 10,
-            }}
-          >
-            Start New Game
-          </Text>
-        </TouchableOpacity>
-      )}
+      {/* // */}
+      <View style={styles.Container}>
+        <Text style={styles.Texto}>Total score: {score}</Text>
+        <Text style={styles.Texto}>High score: {highScore}</Text>
+      </View>
     </View>
   );
 }
@@ -163,6 +196,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
     alignItems: "center",
     justifyContent: "center",
+    // marginTop: 10,
   },
   controlContainer: {
     marginTop: 10,
@@ -174,14 +208,32 @@ const styles = StyleSheet.create({
   },
   controlBtn: {
     backgroundColor: "yellow",
-    width: 100,
-    height: 100,
+    width: 70,
+    height: 70,
   },
   score: {
     color: "white",
-    marginTop: 15,
-    fontSize: 22,
+    marginTop: 5,
+    fontSize: 15,
     padding: 10,
     borderRadius: 10,
+    flexDirection: "column",
+  },
+
+  Texto: {
+    marginBottom: 10,
+    alignContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    marginTop: 10,
+    color: "white",
+    fontSize: 15,
+  },
+  Container: {
+    flex: 1,
+    alignContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    flexDirection: "column",
   },
 });

@@ -1,4 +1,5 @@
 import Constants from "../../../Constants";
+import { Vibration } from "react-native";
 
 const randomPositions = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -65,6 +66,7 @@ export default function (entities, { events, dispatch }) {
           ...tail.elements,
         ];
         dispatch("ate-food");
+        Vibration.vibrate();
 
         food.position = [
           randomPositions(0, Constants.GRID_SIZE - 1),
