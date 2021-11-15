@@ -1,10 +1,9 @@
 import React from "react";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import {
   StyleSheet,
   Text,
   View,
-  Button,
   TouchableOpacity,
   Vibration,
 } from "react-native";
@@ -14,13 +13,17 @@ export default function LoginButtons() {
   return (
     <View style={styles.global}>
       <View style={styles.Button}>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <TouchableOpacity
+          onPress={() => [navigation.navigate("Login"), Vibration.vibrate()]}
+        >
           <Text>Iniciar sesión </Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.Button2}>
-        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+        <TouchableOpacity
+          onPress={() => [navigation.navigate("Register"), Vibration.vibrate()]}
+        >
           <Text>Registrarse</Text>
         </TouchableOpacity>
       </View>
