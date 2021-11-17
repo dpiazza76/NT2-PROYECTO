@@ -17,3 +17,8 @@ export const getUserById = async (id) => {
   const response = await axios.get(URI_USERS +'/getId' + '/' + id.toString());
   return response;
 }
+
+export const postUser = async (user) => {
+  const response = await axios.post(URI_USERS, user);
+  return response
+}

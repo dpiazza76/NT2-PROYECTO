@@ -2,16 +2,28 @@ import * as React from 'react';
 import { Text, View, StyleSheet, TextInput, Button, Alert } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import Constants from 'expo-constants';
+import axios from 'axios'
+import { postUser } from "../../Api";
+
+const SNAKE_GAME_DEFAULT = {
+  "snake":{
+    maxScore: 0,
+    isFav: false,
+    timesPlayed:0
+  }
+}
 
 export default () => {
   const { register, setValue, handleSubmit, control, reset, formState: { errors } } = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: ''
+      fullname: '',
+      email: '',
+      password: '',
+      gamesStatistics: SNAKE_GAME_DEFAULT
     }
   });
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = async (user) => {
+    console.log(user);
   };
 
   const onChange = arg => {
@@ -24,7 +36,7 @@ export default () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>First name</Text>
+      <Text style={styles.label}>Nombre de usuario</Text>
       <Controller
         control={control}
         render={({field: { onChange, onBlur, value }}) => (
@@ -35,10 +47,10 @@ export default () => {
             value={value}
           />
         )}
-        name="firstName"
+        name="fullname"
         rules={{ required: true }}
       />
-      <Text style={styles.label}>Last name</Text>
+      <Text style={styles.label}>Email</Text>
       <Controller
         control={control}
         render={({field: { onChange, onBlur, value }}) => (
@@ -49,7 +61,21 @@ export default () => {
             value={value}
           />
         )}
-        name="lastName"
+        name="email"
+        rules={{ required: true }}
+      />
+       <Text style={styles.label}>Password</Text>
+      <Controller
+        control={control}
+        render={({field: { onChange, onBlur, value }}) => (
+          <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={value => onChange(value)}
+            value={value}
+          />
+        )}
+        name="password"
         rules={{ required: true }}
       />
 
