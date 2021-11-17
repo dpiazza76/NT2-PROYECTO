@@ -8,3 +8,14 @@ export const getUsers = async () => {
   return response;
 };
 
+export const getRanking = async () => {
+  const response = await axios.get(URI_USERS + '/ranking');
+    return response;
+}
+
+export const getUserById = async (id) => {
+  const response = await axios.get(URI_USERS +'/getId' + '/' + id.toString());
+  return response;
+}
+
+

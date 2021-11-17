@@ -3,12 +3,12 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "../../screens/Home";
 import Login from "../../screens/Login";
 import Register from "../../screens/Register";
-import LoginButtons from "../LoginButtons";
 import Form from "../../screens/Register/Form.js";
 import Favs from "../../screens/Favs";
 import Ranking from "../../screens/Ranking";
 import SelectGame from "../../screens/SelectGame";
 import Snake from "../SnakeGame/Snake";
+import UserProfile from '../../screens/UsersProfile';
 export default function DrawerNavigator() {
   const Drawer = createDrawerNavigator();
 
@@ -22,6 +22,7 @@ export default function DrawerNavigator() {
       <Drawer.Screen name={"SelectGame"} component={SelectGame} />
       <Drawer.Screen name={"Snake"} component={Snake} />
       <Drawer.Screen name={"Ranking"} component={Ranking} />
+      <Drawer.Screen name={"UserProfile"} component={UserProfile} />
     </Drawer.Navigator>
   );
 }

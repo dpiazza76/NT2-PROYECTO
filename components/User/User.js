@@ -9,7 +9,7 @@ const User = ({ user }) => {
     <View style={styles.itemContainer}>
       <TouchableOpacity
         style={styles.touchable}
-        onPress={() => navigation.navigate("UsersProfile", { id: user._id })}
+        onPress={() => navigation.navigate("UserProfile", { user: user })}
       >
         <Text style={styles.itemTitle}>{user.fullname}</Text>
         <Text>{user.gamesStatistics.snake.maxScore}</Text>
