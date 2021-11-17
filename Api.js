@@ -17,5 +17,3 @@ export const getUserById = async (id) => {
   const response = await axios.get(URI_USERS +'/getId' + '/' + id.toString());
   return response;
 }
-
-

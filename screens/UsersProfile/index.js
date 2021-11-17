@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text } from "react-native";
 
 const UserProfile = ({route, navigation}) => {
   const [user, setUser] = useState(route.params.user);
+
+  useEffect(() => {
+    setUser(route.params.user);
+  },);
 
   console.log(user);
     return (
