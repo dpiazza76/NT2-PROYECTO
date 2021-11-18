@@ -5,7 +5,10 @@ import AppScrollViewFavs from "../../components/ScrollViewFavs";
 
 export default () => {
   const { AuthData, setAuthData } = useContext(GlobalContext);
-  const statistics = Object.values(AuthData)[3].snake;
+
+  {
+    console.log(AuthData.gamesStatistics.snake.maxScore);
+  }
 
   return (
     <View style={styles.container}>
@@ -13,10 +16,10 @@ export default () => {
       <Text style={styles.Texto}>Tus estadisticas: Snake</Text>
       <View>
         <Text style={styles.Estadisticas}>
-          Max score: {statistics.maxScore}
+          Max score: {AuthData.gamesStatistics.snake.maxScore}
         </Text>
         <Text style={styles.Estadisticas}>
-          Times played: {statistics.timesPlayed}
+          Times played: {AuthData.gamesStatistics.snake.timesPlayed}
         </Text>
       </View>
     </View>

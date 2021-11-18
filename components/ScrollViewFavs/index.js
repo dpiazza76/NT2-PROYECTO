@@ -16,21 +16,25 @@ const AppScrollViewFavs = () => {
   const navigation = useNavigation();
   const { AuthData, setAuthData } = useContext(GlobalContext);
   // temp: if we have another game we should go through all of them to set the list of games
-  const isFav = Object.values(AuthData)[3].snake.isFav;
+  const isFav = AuthData.gamesStatistics.snake.isFav;
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <Text style={styles.text}> Lista de Juegos Favoritos</Text>
         {isFav ? (
-          <View>
+          <View style={styles.container}>
             <Button
               title="Snake"
               onPress={() => navigation.navigate("Snake")}
             />
           </View>
         ) : (
-          <></>
+          <SafeAreaView style={styles.container}>
+            <>
+              <Text style={styles.textSec}>No tienes juegos en favoritos!</Text>
+            </>
+          </SafeAreaView>
         )}
       </ScrollView>
     </SafeAreaView>
@@ -48,6 +52,10 @@ const styles = StyleSheet.create({
   scrollView: {},
   text: {
     fontSize: 32,
+  },
+  textSec: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
 
