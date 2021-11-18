@@ -8,8 +8,8 @@ export default () => {
   const navigation = useNavigation();
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    expoClientId:
-      "362894200824-c894ukhc2q2tbsu7i63ibcj0klvhjkah.apps.googleusercontent.com",
+    expoClientId: 
+      "362894200824-c894ukhc2q2tbsu7i63ibcj0klvhjkah",
     iosClientId:
       "362894200824-0pdtc7096vq81lu0dunduout8phkimgd.apps.googleusercontent.com",
     androidClientId:

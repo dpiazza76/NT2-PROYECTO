@@ -14,8 +14,7 @@ export default function LoginButtons() {
     <View style={styles.global}>
       <View style={styles.Button}>
         <TouchableOpacity
-          onPress={() => [navigation.navigate("Login"), Vibration.vibrate()]}
-        >
+          onPress={() => [navigation.navigate("Login"), Vibration.vibrate()]}>
           <Text>Iniciar sesión </Text>
         </TouchableOpacity>
       </View>
