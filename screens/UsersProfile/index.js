@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text,} from "react-native";
 
 const UserProfile = ({route, navigation}) => {
   const [user, setUser] = useState(route.params.user);
