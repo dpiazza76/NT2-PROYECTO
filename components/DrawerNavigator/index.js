@@ -8,7 +8,8 @@ import Favs from "../../screens/Favs";
 import Ranking from "../../screens/Ranking";
 import SelectGame from "../../screens/SelectGame";
 import Snake from "../SnakeGame/Snake";
-import UserProfile from '../../screens/UsersProfile';
+import UserProfile from "../../screens/UsersProfile";
+import LoginForm from "../User/LoginForm";
 export default function DrawerNavigator() {
   const Drawer = createDrawerNavigator();
 
@@ -16,6 +17,7 @@ export default function DrawerNavigator() {
     <Drawer.Navigator>
       <Drawer.Screen name={"Home"} component={Home} />
       <Drawer.Screen name={"Login"} component={Login} />
+      <Drawer.Screen name={"LoginLocal"} component={LoginForm} />
       <Drawer.Screen name={"Register"} component={Register} />
       <Drawer.Screen name={"Form"} component={Form} />
       <Drawer.Screen name={"Favs ❤"} component={Favs} />

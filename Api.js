@@ -9,16 +9,21 @@ export const getUsers = async () => {
 };
 
 export const getRanking = async () => {
-  const response = await axios.get(URI_USERS + '/ranking');
-    return response;
-}
+  const response = await axios.get(URI_USERS + "/ranking");
+  return response;
+};
 
 export const getUserById = async (id) => {
-  const response = await axios.get(URI_USERS +'/getId' + '/' + id.toString());
+  const response = await axios.get(URI_USERS + "/getId" + "/" + id.toString());
   return response;
-}
+};
 
 export const postUser = async (user) => {
   const response = await axios.post(URI_USERS, user);
-  return response
-}
+  return response;
+};
+
+export const login = async (user) => {
+  const response = await axios.post(URI_USERS + "/login", user);
+  return response;
+};

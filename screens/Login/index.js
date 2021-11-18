@@ -1,9 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, StatusBar } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import * as Google from "expo-auth-session/providers/google";
 import axios from "axios";
 
-export default ({ navigation }) => {
+export default () => {
+  const navigation = useNavigation();
+
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId:
       "362894200824-c894ukhc2q2tbsu7i63ibcj0klvhjkah.apps.googleusercontent.com",
@@ -41,7 +44,12 @@ export default ({ navigation }) => {
             promptAsync();
           }}
         />
-        <Button title="Login local" />
+        <Button
+          title="Login local"
+          onPress={() => {
+            navigation.navigate("LoginLocal");
+          }}
+        />
       </View>
     </View>
   );

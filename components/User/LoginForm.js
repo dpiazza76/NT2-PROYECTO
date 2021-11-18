@@ -2,61 +2,26 @@ import * as React from "react";
 import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import Constants from "expo-constants";
-import axios from "axios";
-import { postUser } from "../../Api";
-
-const SNAKE_GAME_DEFAULT = {
-  snake: {
-    maxScore: 0,
-    isFav: false,
-    timesPlayed: 0,
-  },
-};
+import { login } from "../../Api";
 
 export default () => {
   const {
-    register,
-    setValue,
     handleSubmit,
     control,
     reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      fullname: "",
       email: "",
       password: "",
-      gamesStatistics: SNAKE_GAME_DEFAULT,
     },
   });
   const onSubmit = async (user) => {
-    postUser(user);
+    login(user);
   };
-
-  const onChange = (arg) => {
-    return {
-      value: arg.nativeEvent.text,
-    };
-  };
-
-  console.log("errors", errors);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Nombre de usuario</Text>
-      <Controller
-        control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
-            value={value}
-          />
-        )}
-        name="fullname"
-        rules={{ required: true }}
-      />
       <Text style={styles.label}>Email</Text>
       <Controller
         control={control}
@@ -104,7 +69,7 @@ export default () => {
         <Button
           style={styles.buttonInner}
           color
-          title="Register"
+          title="Log in"
           onPress={handleSubmit(onSubmit)}
         />
       </View>
