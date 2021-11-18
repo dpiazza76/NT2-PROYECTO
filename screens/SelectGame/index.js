@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, StatusBar } from "react-native";
+import { Text, View, Button, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 export default () => {
