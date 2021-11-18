@@ -1,10 +1,14 @@
-import * as React from "react";
+import React, {useContext} from "react";
 import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import Constants from "expo-constants";
 import { login } from "../../Api";
+import GlobalContext from '../../components/global/context';
 
 export default () => {
+
+  const {AuthData, setAuthData} = useContext(GlobalContext);
+
   const {
     handleSubmit,
     control,
@@ -17,9 +21,11 @@ export default () => {
     },
   });
   const onSubmit = async (user) => {
-    login(user);
+    const userLogin =  await login(user);
+    setAuthData(userLogin.data);
   };
 
+  console.log(AuthData);
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Email</Text>

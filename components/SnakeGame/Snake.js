@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -8,16 +8,19 @@ import Tail from "./Tail";
 import Constants from "../../Constants";
 import GameLoop from "./GameLoop/SnakeGameLoop";
 import { Audio } from "expo-av";
+import { getUserById } from "../../Api";
+import GlobalContext from '../../components/global/context'
 
 export default function Snake() {
   const BoardSize = Constants.GRID_SIZE * Constants.CELL_SIZE;
   const engine = useRef(null);
   const initialPos = Math.floor(Constants.GRID_SIZE / 2);
-  const [isGameRunning, setIsGameRunning] = useState(true);
+  const [isGameRunning, setIsGameRunning] = useState(false);
+  const {AuthData, setAuthData} = useContext(GlobalContext);
 
   const [score, setScore] = useState(0);
   // Should initialize the value with score from db -> axios.get...
-  const [highScore, setHighScore] = useState(score);
+  const [highScore, setHighScore] = useState(AuthData.gamesStatistics.snake.maxScore);
 
   const updateHighScore = () => {
     if (score > highScore) setHighScore(score);
@@ -123,7 +126,7 @@ export default function Snake() {
         onEvent={(e) => {
           switch (e) {
             case "game-over":
-              alert("Game over!");
+              alert("😢Game over😢");
               setIsGameRunning(false);
               setScore(0);
               updateHighScore();

@@ -1,11 +1,8 @@
 import React, {useState} from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
 import DrawerNavigator from "./components/DrawerNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
-import Snake from "./components/SnakeGame/Snake";
-import GlobalContext, {authData} from './components/global/context';
-import axios from "axios";
+import GlobalContext, { authData } from './components/global/context';
 
 export default function App() {
 
@@ -13,14 +10,12 @@ export default function App() {
 
 
   const [AuthData, setAuthData] = useState({
-    //...authData,
-    //agregarFav: () => {axios.post(`http://localhost:3000/api/users/updateFav/${authData._id}`)},
-
-  
+    ...authData,
   });
 
+console.log(AuthData);
   return (
-    <GlobalContext.Provider value = {authData}>
+    <GlobalContext.Provider value={{AuthData, setAuthData}}>
       <NavigationContainer>
         <DrawerNavigator />
       </NavigationContainer>

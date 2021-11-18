@@ -1,9 +1,22 @@
-import React from "react";
+import React, {useContext} from "react";
 import { StyleSheet, Text, View, Button, StatusBar } from "react-native";
 import LoginButtons from "../../components/LoginButtons";
+import GlobalContext from '../../components/global/context'
 
 export default ({ navigation }) => {
+  const {AuthData, setAuthData} = useContext(GlobalContext);
+  const isAuthenticated = () => AuthData._id !== undefined
+
   return (
+    
+    (isAuthenticated())
+    ?
+    <View>
+      <StatusBar style='auto'/>
+      <Text style={styles.Texto}>
+      Bienvenido a Juegos!</Text>
+    </View>
+    :
     <View style={styles.Container}>
       <StatusBar style="auto" />
       <View>
