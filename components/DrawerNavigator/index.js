@@ -11,6 +11,7 @@ import Snake from "../SnakeGame/Snake";
 import UserProfile from '../../screens/UsersProfile';
 import GlobalContext, {authData} from '../../components/global/context';
 import LoginForm from '../User/LoginForm'
+import MyProfile from '../../screens/MyProfile'
 
 export default function DrawerNavigator() {
   const {AuthData, setAuthData} = useContext(GlobalContext);
@@ -29,6 +30,7 @@ export default function DrawerNavigator() {
           <Drawer.Screen name={"Snake"} component={Snake} />
           <Drawer.Screen name={"Ranking"} component={Ranking} />
           <Drawer.Screen name={"UserProfile"} component={UserProfile} />
+          <Drawer.Screen name={"MyProfile"} component={MyProfile} />
         </Drawer.Navigator>
         :
         <Drawer.Navigator>

@@ -1,12 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { StyleSheet, Text, View, Button, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import * as Google from "expo-auth-session/providers/google";
 import axios from "axios";
-
+import GlobalContext from '../../components/global/context'
 export default () => {
   const navigation = useNavigation();
-
+  const {AuthData, setAuthData} = useContext(GlobalContext);
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId: 
       "362894200824-c894ukhc2q2tbsu7i63ibcj0klvhjkah",
@@ -29,6 +29,7 @@ export default () => {
 
         .then((data) => {
           console.log("Data de usuario", data);
+          setAuthData(data)
         });
     }
   }, [response]);

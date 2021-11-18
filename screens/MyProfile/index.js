@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, {useContext} from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import GlobalContext from '../../components/global/context'
 
-const UserProfile = ({route, navigation}) => {
-  const [user, setUser] = useState(route.params.user);
+const MyProfile = ({route, navigation}) => {
+  const {AuthData, setAuthData} = useContext(GlobalContext);
 
-  useEffect(() => {
-    setUser(route.params.user);
-  },);
-
-  console.log(user);
     return (
       <View style= {styles.itemContainer}>
-         <Text style={styles.itemTitle}>Nombre de usuario: {user.fullname}</Text>
-          <Text>Maximo puntaje en snake: {user.gamesStatistics.snake.maxScore}</Text>
-        <Text>Cantidad de partidas jugadas: {user.gamesStatistics.snake.timesPlayed}</Text> 
+          <Text style={styles.itemTitle}>Mi nombre de usuario {AuthData.fullname}</Text>
+          <Text>Juego favorito: Snake</Text>
+          <Text>Cantidad de partidas jugadas: {AuthData.gamesStatistics.snake.timesPlayed}</Text> 
+          <Text>Puntaje maximo: {AuthData.gamesStatistics.snake.maxScore}</Text>
+          <TouchableOpacity
+            onPress={() => [navigation.navigate("EditProfile"), Vibration.vibrate()]}
+        >
+          <Text>Editar perfil</Text>
+        </TouchableOpacity> 
       </View>
     );
   };
@@ -50,5 +52,4 @@ const UserProfile = ({route, navigation}) => {
     },
   });
 
-  export default UserProfile;
-
+  export default MyProfile;
