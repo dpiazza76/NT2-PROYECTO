@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, StatusBar } from "react-native";
 import AppScrollViewFavs from "../../components/ScrollViewFavs";
 
-export default ({ navigation }) => {
+export default () => {
   return (
     <View>
       <StatusBar style="auto" />
@@ -15,7 +15,7 @@ export default ({ navigation }) => {
 
 const styles = StyleSheet.create({
   Texto: {
-    marginBottom: 10,
+    marginBottom: 30,
     alignContent: "center",
     alignItems: "center",
     textAlign: "center",
