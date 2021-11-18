@@ -18,7 +18,7 @@ export default function DrawerNavigator() {
 
   const Drawer = createDrawerNavigator();
 
-  const isAuthenticated = () => AuthData._id !== undefined
+  const isAuthenticated = () => AuthData.email !== undefined
 
   return (
       

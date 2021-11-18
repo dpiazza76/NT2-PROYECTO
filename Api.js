@@ -27,3 +27,8 @@ export const login = async (user) => {
   const response = await axios.post(URI_USERS + "/login", user);
   return response;
 };
+
+export const getUserByEmail = async (email) => {
+  const response = await axios.get(URI_USERS +"/search?email="+email.toString());
+  return response;
+};
