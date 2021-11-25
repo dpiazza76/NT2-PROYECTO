@@ -12,7 +12,9 @@ export default () => {
   return isAuthenticated() ? (
     <View>
       <StatusBar style="auto" />
-      <Text style={styles.Titulo}>Bienvenido a Juegos!</Text>
+      <View style={styles.Container}>
+        <Text style={styles.Texto}>Bienvenido a Juegos!</Text>
+      </View>
       <Favs />
       <UserData />
     </View>
@@ -20,7 +22,7 @@ export default () => {
     <View style={styles.Container}>
       <StatusBar style="auto" />
       <View>
-        <Text style={styles.Titulo}>
+        <Text style={styles.Texto}>
           Inicie sesión o regístrese para continuar
         </Text>
       </View>
@@ -31,26 +33,24 @@ export default () => {
 
 const styles = StyleSheet.create({
   Texto: {
-    marginBottom: 10,
-    alignContent: "center",
-    alignItems: "center",
     textAlign: "center",
-    marginTop: 25,
+    fontSize: 25,
+    color:'white',
+    marginTop:50
   },
   Titulo: {
     marginBottom: 30,
-    alignContent: "center",
-    alignItems: "center",
     textAlign: "center",
     marginTop: 25,
     fontSize: 36,
     lineHeight: 16,
     fontWeight: "bold",
-    color: "black",
+    color: "white",
   },
   Container: {
+    flex:1,
     alignContent: "center",
     alignItems: "center",
-    textAlign: "center",
+    backgroundColor: "#0e101c",
   },
 });

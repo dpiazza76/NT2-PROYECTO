@@ -2,7 +2,6 @@ import * as React from "react";
 import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import Constants from "expo-constants";
-import axios from "axios";
 import { postUser } from "../../Api";
 
 const SNAKE_GAME_DEFAULT = {
