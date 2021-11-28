@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import DrawerNavigator from "./components/DrawerNavigator";
+import GlobalNavigator from "./components/Navigators/GlobalNavigator"
 import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
 import GlobalContext, { authData } from './components/global/context';
@@ -17,7 +17,7 @@ console.log(AuthData);
   return (
     <GlobalContext.Provider value={{AuthData, setAuthData}}>
       <NavigationContainer>
-        <DrawerNavigator />
+        <GlobalNavigator />
       </NavigationContainer>
     </GlobalContext.Provider>
 
