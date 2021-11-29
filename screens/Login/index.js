@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import * as Google from "expo-auth-session/providers/google";
 import axios from "axios";
 import GlobalContext from '../../components/global/context'
-import { getUserByEmail, postUser } from "../../Api";
+import { getUserByEmail, postUser, loginGoogle } from "../../Api";
 
 export default () => {
   const navigation = useNavigation();
@@ -19,53 +19,37 @@ export default () => {
     webClientId: "GOOGLE_GUID.apps.googleusercontent.com",
   });
 
-  // React.useEffect(() => {
-  //   if (response?.type === "success") {
-  //     const { authentication } = response;
-
-  //     axios
-  //       .get(
-  //         `http://localhost:3000/api/users/getToken/${authentication.accessToken}`
-  //       )
-  //       .then((res) => res.json())
-
-  //       .then((data) => {
-  //         console.log("Data de usuario", data);
-  //         setAuthData(data)
-  //       });
-  //   }
-  // }, [response]);
-
   React.useEffect(() => {
-    if (response?.type === 'success') {
+    if (response?.type === "success") {
       const { authentication } = response;
 
-      fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${authentication.accessToken}`)
-        .then(res => res.json())
-        .then(data => {
-          // const userVal = getUserByEmail(data.email)
-          // if (userVal._id == undefined) {
-          //   const usuarioDB = {
-          //     email: data.email,
-          //     fullname: data.given_name,
-          //     gameStatistics: {
-          //       snake: {
-          //         maxScore: 0,
-          //         isFav: false,
-          //         timesPlayed: 0
-          //       }
-          //     }
-          //   }
-          //   postUser(usuarioDB);
-          //   setAuthData(usuarioDB)
-          // } else {
-          //   setAuthData(userVal)
-          // }
+      const config = {
+        headers: { Authorization: authentication.accessToken }
+    };
+
+      fetch("https://games-ort.herokuapp.com/api/users/logingoogle", {method: "POST",
+        headers: { Authorization: authentication.accessToken }
+    })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
           setAuthData(data)
-          console.log("Aca pongo el aut data", AuthData)
-        })
+        });
     }
   }, [response]);
+
+  // React.useEffect(() => {
+  //   if (response?.type === 'success') {
+  //     const { authentication } = response;
+
+  //     const user = loginGoogle(authentication.accessToken)
+  //     console.log("***USUARIO***")
+  //     console.log(user)
+  //     console.log("***TOKEN***")
+  //     console.log(authentication.accessToken)
+  //     setAuthData(user)
+  //   }
+  // }, [response]);
 
 
 

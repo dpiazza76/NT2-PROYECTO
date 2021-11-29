@@ -32,3 +32,11 @@ export const getUserByEmail = async (email) => {
   const response = await axios.get(URI_USERS +"/search?email="+email.toString());
   return response;
 };
+
+export const loginGoogle = async (googleToken) => {
+  const config = {
+    headers: { Authorization: googleToken }
+};
+  const response = await axios.post(URI_USERS +"/logingoogle", config);
+  return response;
+};
