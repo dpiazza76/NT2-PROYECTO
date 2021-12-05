@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const URI_USERS = "http://localhost:3000/api/users";
-const URI_GAMES = "http://localhost:3000/api/games";
+const URI_USERS = "https://games-ort.herokuapp.com/api/users";
+const URI_GAMES = "https://games-ort.herokuapp.com/api/games";
 
 export const getUsers = async () => {
   const response = await axios.get(URI_USERS);
@@ -24,7 +24,7 @@ export const postUser = async (user) => {
 };
 
 export const login = async (user) => {
-  const response = await axios.post(URI_USERS + "/login", user);
+  const response = await axios.post(URI_USERS + "/auth/local", user);
   return response;
 };
 
@@ -37,6 +37,6 @@ export const loginGoogle = async (googleToken) => {
   const config = {
     headers: { Authorization: googleToken }
 };
-  const response = await axios.post(URI_USERS +"/logingoogle", config);
+  const response = await axios.post(URI_USERS +"/auth/google", config);
   return response;
 };
