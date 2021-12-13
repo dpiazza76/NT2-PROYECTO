@@ -23,7 +23,18 @@ export default function Snake() {
   const [highScore, setHighScore] = useState(AuthData.gamesStatistics.snake.maxScore);
 
   const updateHighScore = () => {
-    if (score > highScore) setHighScore(score);
+    if (score > highScore) {
+      setHighScore(score)
+      // fetch("http://localhost:3000/api/users/updateGame/" + AuthData._id, {
+      //   method: "PUT",
+      //   headers: { Authorization: AuthData.token }
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     setAuthData(data)
+      //   });
+
+    }
   };
 
   const randomPositions = (min, max) => {

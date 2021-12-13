@@ -25,7 +25,6 @@ export default () => {
     setAuthData(userLogin.data);
   };
 
-  console.log(AuthData);
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Email</Text>
@@ -51,25 +50,12 @@ export default () => {
             onBlur={onBlur}
             onChangeText={(value) => onChange(value)}
             value={value}
+            secureTextEntry={true}
           />
         )}
         name="password"
         rules={{ required: true }}
       />
-
-      <View style={styles.button}>
-        <Button
-          style={styles.buttonInner}
-          color
-          title="Reset"
-          onPress={() => {
-            reset({
-              firstName: "",
-              lastName: "",
-            });
-          }}
-        />
-      </View>
 
       <View style={styles.button}>
         <Button

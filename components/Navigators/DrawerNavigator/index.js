@@ -19,9 +19,9 @@ export default function DrawerNavigator() {
           <Drawer.Screen name={"Home"} component={Home} />
           <Drawer.Screen name={"Favs ❤"} component={Favs} />
           <Drawer.Screen name={"SelectGame"} component={SelectGame} />
-          <Drawer.Screen name={"Snake"} component={Snake} />
+          <Drawer.Screen name={"Snake"} component={Snake} options={{drawerItemStyle: { display: "none" }}} />
           <Drawer.Screen name={"Ranking"} component={Ranking} />
-          <Drawer.Screen name={"UserProfile"} component={UserProfile} />
+          <Drawer.Screen name={"UserProfile"} component={UserProfile} options={{drawerItemStyle: { display: "none" }}} />
           <Drawer.Screen name={"MyProfile"} component={MyProfile} />
         </Drawer.Navigator>
   );

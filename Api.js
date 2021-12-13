@@ -8,8 +8,14 @@ export const getUsers = async () => {
   return response;
 };
 
-export const getRanking = async () => {
-  const response = await axios.get(URI_USERS + "/ranking");
+export const getRanking = async (token) => {
+  console.log(token)
+  const response = await axios.get(URI_USERS + "/ranking",{
+    headers: {
+        'authorization': token,
+        'Accept' : 'application/json',
+        'Content-Type': 'application/json'
+    }});
   return response;
 };
 
@@ -40,3 +46,4 @@ export const loginGoogle = async (googleToken) => {
   const response = await axios.post(URI_USERS +"/auth/google", config);
   return response;
 };
+

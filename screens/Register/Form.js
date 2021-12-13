@@ -79,25 +79,12 @@ export default () => {
             onBlur={onBlur}
             onChangeText={(value) => onChange(value)}
             value={value}
+            secureTextEntry={true}
           />
         )}
         name="password"
         rules={{ required: true }}
       />
-
-      <View style={styles.button}>
-        <Button
-          style={styles.buttonInner}
-          color
-          title="Reset"
-          onPress={() => {
-            reset({
-              firstName: "",
-              lastName: "",
-            });
-          }}
-        />
-      </View>
 
       <View style={styles.button}>
         <Button

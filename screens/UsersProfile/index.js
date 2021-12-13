@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text,} from "react-native";
+import { View, StyleSheet, Text, Button,} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const UserProfile = ({route, navigation}) => {
   const [user, setUser] = useState(route.params.user);
@@ -14,6 +16,9 @@ const UserProfile = ({route, navigation}) => {
          <Text style={styles.itemTitle}>Nombre de usuario: {user.fullname}</Text>
           <Text>Maximo puntaje en snake: {user.gamesStatistics.snake.maxScore}</Text>
         <Text>Cantidad de partidas jugadas: {user.gamesStatistics.snake.timesPlayed}</Text> 
+        <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate("Ranking")}>
+          <Text>Regresar</Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -43,6 +48,8 @@ const UserProfile = ({route, navigation}) => {
       paddingHorizontal: 8,
       borderRadius: 4,
       backgroundColor: "#ea899a",
+      marginTop: 10
+      
     },
     touchable: {
       justifyContent: "center",

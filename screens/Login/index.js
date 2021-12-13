@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text, View, Button, StatusBar } from "react-native";
+import { StyleSheet, Text, View, Button, StatusBar, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import * as Google from "expo-auth-session/providers/google";
 import axios from "axios";
@@ -25,14 +25,12 @@ export default () => {
 
       const config = {
         headers: { Authorization: authentication.accessToken }
-    };
+      };
 
       fetch("https://games-ort.herokuapp.com/api/users/logingoogle", {method: "POST",
-        headers: { Authorization: authentication.accessToken }
-    })
+        headers: { Authorization: authentication.accessToken }})
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
           setAuthData(data)
         });
     }
@@ -57,22 +55,23 @@ export default () => {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View>
-        <View style={styles.button}>
-          <Button
+        <View style={styles.Button}>
+        <TouchableOpacity
             disabled={!request}
             title="Login con google"
             onPress={() => {
               promptAsync();
-            }}
-          />
+            }}>
+            <Text>Login con Google</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.button}>
-          <Button
-            title="Login local"
-            onPress={() => {
+        <View style={styles.Button2}>
+        <TouchableOpacity
+              onPress={() => {
               navigation.navigate("LoginLocal");
-            }}
-          />
+            }}>
+            <Text>Login Local</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -92,5 +91,23 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: "#ec5990",
     borderRadius: 4,
+  },
+  Button: {
+    alignItems: "center",
+    alignContent: "center",
+    marginTop: 150,
+    padding: 15,
+    backgroundColor: "#ec5990",
+    width: 180,
+    borderRadius: 50,
+  },
+  Button2: {
+    alignItems: "center",
+    alignContent: "center",
+    padding: 15,
+    backgroundColor: "#ec5990",
+    width: 180,
+    borderRadius: 50,
+    marginTop: 10,
   },
 })

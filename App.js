@@ -13,7 +13,7 @@ export default function App() {
     ...authData,
   });
 
-console.log(AuthData);
+
   return (
     <GlobalContext.Provider value={{AuthData, setAuthData}}>
       <NavigationContainer>
